@@ -20,6 +20,7 @@ app.use(cors({
   credentials: true,
 }));
 
+
 app.use(
   fileUpload({
     limits: { fileSize: 50 * 1024 * 1024 },
