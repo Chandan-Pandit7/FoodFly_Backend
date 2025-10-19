@@ -6,6 +6,7 @@ import cors from "cors"
 const app=express();
 const PORT=process.env.PORT;
 import fileUpload from "express-fileupload"
+import serverless from "serverless-http"
 
 import authRouter from "./routes/auth.js"
 import cartRouter from "./routes/cart.js"
@@ -42,11 +43,11 @@ app.use('/payment',verifyjwt,paymentRouter); //done
 mongoose.connect(`${process.env.DB_PATH}/${process.env.DB_NAME}`)
     .then(()=>{
         app.listen(PORT,()=>{
-            console.log(`http://localhost:${PORT}`)
+            console.log(`🚀 http://localhost:${PORT}`)
         })
     })
-    .catch((err)=>{
-        console.log(err)
+    .catch((error)=>{
+        console.error('❌ MongoDB connection error:', error);
     })
 
 // this is my index.js
